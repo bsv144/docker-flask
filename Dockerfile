@@ -6,8 +6,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get install -y \
     python-pip python-dev uwsgi-plugin-python \
     nginx supervisor
-COPY flask.conf /etc/nginx/sites-available/
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY nginx/flask.conf /etc/nginx/sites-available/
+COPY supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY app /var/www/app
 
 RUN mkdir -p /var/log/nginx/app /var/log/uwsgi/app /var/log/supervisor \
